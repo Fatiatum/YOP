@@ -1,0 +1,38 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.hidden_field :experience_id %>
+  <%= f.hidden_field :price %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :payment_type %><br>
+    <%= f.select :payment_type, [["Transferência bancária", "Transferência bancária"], ["PayPal via e-mail", "PayPal via e-mail"]] %>
+  </div>
+  <div>
+    <%= f.label :date_selected %><br />
+    <%= f.date_select :date_selected, :start_year => Date.today.year, :end_year => (Date.today.year+2) %>
+  </div>
+  <div>
+    <%= f.label :number_person %><br />
+    <%= f.number_field :number_person, :value => 1, :min => '1', :max => '5' %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

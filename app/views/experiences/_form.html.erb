@@ -1,0 +1,37 @@
+<%= form_for(@experience) do |f| %>
+  <% if @experience.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@experience.errors.count, "error") %> prohibited this experience from being saved:</h2>
+
+      <ul>
+      <% @experience.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.hidden_field :Product_id %>
+  <div class="field">
+    <%= f.label :program_type %><br>
+    <%= f.select :program_type, [["Day", "Day"], ["Nigth", "Nigth"], ["Full Day", "Full Day"]] %>
+  </div>
+  <div class="field">
+    <%= f.label :package_type %><br>
+    <%= f.select :package_type, [["Lux", "Lux"], ["Standart", "Standart"], ["Budget", "Budget"]] %>
+  </div>
+  <div class="field">
+    <%= f.label :description_pt %><br>
+    <%= f.text_field :description_pt %>
+  </div>
+  <div class="field">
+    <%= f.label :description_en %><br>
+    <%= f.text_field :description_en %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
