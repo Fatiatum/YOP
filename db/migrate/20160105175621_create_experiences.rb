@@ -6,7 +6,7 @@ class CreateExperiences < ActiveRecord::Migration
       t.string :description_pt
       t.string :description_en
       t.string :price
-      t.references :Product, index: true, foreign_key: true
+      t.integer :Product_id
 
       t.timestamps null: false
     end
